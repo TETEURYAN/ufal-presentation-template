@@ -6,12 +6,34 @@
 %
 \documentclass[9pt]{beamer}
 \usepackage[szu,en]{collegeBeamer}
-\usepackage{fontspec}
-% falls back to a widely-available monospace font on machines without Cascadia Code installed
 
-\IfFontExistsTF{Cascadia Code}
-    {\newfontfamily\cascadia{Cascadia Code}}
-    {\newfontfamily\cascadia{DejaVu Sans Mono}}
+% `fontspec` (used below for the \cascadia monospace font in the author's
+% email) only works under XeTeX/LuaTeX -- it throws a fatal error under
+% pdfTeX. Some setups (e.g. Overleaf, if the compiler is set to pdfLaTeX
+% and ignores the "% !TeX program = xelatex" magic comment on line 1) still
+% compile this file with pdflatex, so \cascadia is defined conditionally:
+% a real custom font under XeTeX/LuaTeX, a plain \ttfamily fallback under
+% pdfTeX (which also needs inputenc/fontenc for the accented characters
+% used elsewhere, e.g. "Maceió", since pdfTeX is not UTF-8-native like
+% XeTeX/LuaTeX).
+\usepackage{iftex}
+\ifxetex
+    \usepackage{fontspec}
+    \IfFontExistsTF{Cascadia Code}
+        {\newfontfamily\cascadia{Cascadia Code}}
+        {\newfontfamily\cascadia{DejaVu Sans Mono}}
+\else
+    \ifluatex
+        \usepackage{fontspec}
+        \IfFontExistsTF{Cascadia Code}
+            {\newfontfamily\cascadia{Cascadia Code}}
+            {\newfontfamily\cascadia{DejaVu Sans Mono}}
+    \else
+        \usepackage[utf8]{inputenc}
+        \usepackage[T1]{fontenc}
+        \newcommand{\cascadia}{\ttfamily}
+    \fi
+\fi
 \usetikzlibrary{positioning,arrows.meta}
 
 % biblatex: edit referencias.bib with your own references
