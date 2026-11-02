@@ -1,0 +1,230 @@
+% !TeX program = xelatex
+%
+% UFAL Presentation Template — college-beamer theme with UFAL branding.
+% Replace the title/author/date below and the instructional text in each
+% frame with your own content. See README.md for details.
+%
+\documentclass[9pt]{beamer}
+\usepackage[szu,en]{collegeBeamer}
+\usepackage{fontspec}
+% falls back to a widely-available monospace font on machines without Cascadia Code installed
+
+\IfFontExistsTF{Cascadia Code}
+    {\newfontfamily\cascadia{Cascadia Code}}
+    {\newfontfamily\cascadia{DejaVu Sans Mono}}
+\usetikzlibrary{positioning,arrows.meta}
+
+% biblatex: edit referencias.bib with your own references
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{referencias.bib}
+
+\renewcommand{\qaStr}{\textsl{Thank you for your attention! \\ Questions and comments are welcome.}}
+
+\definecolor{hrefcol}{RGB}{55, 50, 204} % Example: blue color
+
+% meta-data -- replace with your own
+\title{
+{\large\color{blue!60!black}\textbf{Your Department or Field}}\\[0.8em]
+Your Presentation Title Goes Here
+}
+% the theme's title-page template always appends "\\" after \insertsubtitle;
+% an empty subtitle makes that "\\" have nothing to end, causing a LaTeX error,
+% so a near-invisible placeholder (thin space) is used instead of leaving it undefined
+\subtitle{\,}
+
+\author{
+Your Name\\
+{\footnotesize\cascadia\href{mailto:your.email@example.com}{your.email@example.com}}}
+
+\date{
+Maceió, Brazil \\
+Month Year
+}
+
+% document body
+\begin{document}
+
+    \maketitle
+
+    \section{Introduction}
+
+    \begin{frame}{Context and Motivation}
+        \begin{itemize}
+            \item Describe the problem domain and why it matters \cite{example2024}
+            \item State the current situation or practice
+            \item Point out the limitations of existing approaches
+            \item Introduce, in one line, the direction your work takes
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Background}
+        \small
+        \begin{itemize}
+            \itemsep1pt
+            \item Key concept 1 your audience needs before the next slides \cite{example2024}
+            \item Key concept 2
+            \item Key concept 3
+            \item How these concepts relate to each other
+        \end{itemize}
+        \vskip0.3em
+        \centering\footnotesize\ctextbf{One-sentence statement of the gap your work addresses}
+    \end{frame}
+
+    \begin{frame}{General Objective}
+        State, in one or two sentences, the overall goal of the work.
+
+        \vskip1em
+        \begin{block}{Research Questions}
+            \begin{enumerate}
+                \item First research question
+                \item Second research question
+                \item Third research question
+            \end{enumerate}
+        \end{block}
+    \end{frame}
+
+    \begin{frame}{Specific Objectives}
+        \begin{itemize}
+            \item First specific objective
+            \item Second specific objective
+            \item Third specific objective
+            \item Fourth specific objective
+            \item Fifth specific objective
+        \end{itemize}
+    \end{frame}
+
+    \section{Related Work}
+
+    \begin{frame}{Why This Work Matters}
+        \small
+        \begin{itemize}
+            \itemsep1pt
+            \item What the closest related work already does \cite{example2024}
+            \item What it does not cover
+            \item How your work is positioned relative to it
+        \end{itemize}
+        \vskip0.2em
+        \begin{block}{Gaps Addressed}
+            \begin{enumerate}
+                \itemsep0pt
+                \item First gap your work fills
+                \item Second gap your work fills
+            \end{enumerate}
+        \end{block}
+    \end{frame}
+
+    \section{Methodology}
+
+    \begin{frame}{Pipeline Overview}
+        \begin{center}
+        \resizebox{\textwidth}{!}{%
+        \begin{tikzpicture}[node distance=0.5cm, every node/.style={font=\scriptsize}]
+            \tikzset{box/.style={draw=maincolor, thick, rounded corners, fill=morelightgray, text width=2.4cm, align=center, minimum height=1.5cm}}
+            \node[box] (a) {Input / data};
+            \node[box, right=of a] (b) {Processing step 1};
+            \node[box, right=of b] (c) {Processing step 2};
+            \node[box, right=of c] (d) {Processing step 3};
+            \node[box, right=of d] (e) {Output / evaluation};
+            \foreach \x/\y in {a/b, b/c, c/d, d/e}{\draw[-{Latex}, thick] (\x) -- (\y);}
+        \end{tikzpicture}%
+        }
+        \end{center}
+        \vskip0.5em
+        Explain, in one or two sentences, the pipeline shown above.
+    \end{frame}
+
+    \begin{frame}{Data and Setup}
+        \begin{itemize}
+            \item Where the data comes from and how it was collected
+            \item Size and relevant characteristics of the dataset
+            \item Key configuration choices, parameters, or constraints
+            \item Ethical or privacy considerations, if applicable
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Experimental Design}
+        \begin{center}
+        \small
+        \renewcommand{\arraystretch}{1.15}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \textbf{Condition} & \textbf{Variable A} & \textbf{Variable B} \\
+            \hline
+            Group 1 & value & value \\
+            \hline
+            Group 2 & value & value \\
+            \hline
+            Group 3 & value & value \\
+            \hline
+        \end{tabular}
+        \end{center}
+        \vskip0.5em
+        Briefly explain the comparison design and the evaluation metrics used.
+    \end{frame}
+
+    \section{Results}
+
+    \begin{frame}{Main Finding}
+        \begin{itemize}
+            \item State the headline result plainly
+            \item Give the supporting number or comparison
+            \item Note what this result does -- and does not -- show
+        \end{itemize}
+        \vskip0.3em
+        \centering\footnotesize\ctextbf{One-sentence takeaway for this slide}
+    \end{frame}
+
+    \begin{frame}{Detailed Results}
+        \begin{itemize}
+            \item Breakdown point 1, e.g.\ per group/class/condition
+            \item Breakdown point 2
+            \item Breakdown point 3
+            \item Statistical test used and its outcome \cite{example2024}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Qualitative Observations}
+        \small
+        \begin{itemize}
+            \item A concrete example or case illustrating a pattern
+            \item Another concrete example
+            \item What these examples suggest
+        \end{itemize}
+    \end{frame}
+
+    \section{Concluding Remarks}
+
+    \begin{frame}{Answer to the Research Question}
+        \begin{itemize}
+            \item How your results answer the first research question
+            \item How your results answer the second research question
+        \end{itemize}
+        \vskip0.3em
+        \centering\footnotesize\ctextbf{Practical implication of your findings}
+    \end{frame}
+
+    \begin{frame}{Contributions}
+        \small
+        \begin{itemize}
+            \item First contribution
+            \item Second contribution
+            \item Third contribution
+            \item Fourth contribution
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Limitations \& Future Work}
+        \small
+        \begin{itemize}
+            \item First limitation
+            \item Second limitation
+        \end{itemize}
+        \vskip0.3em
+        \textbf{Future work:} list two or three concrete next steps here.
+    \end{frame}
+
+    \bibliographpage
+
+    \QApage
+
+\end{document}
