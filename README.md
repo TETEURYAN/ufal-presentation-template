@@ -2,10 +2,23 @@
 <h1>UFAL Presentation Template</h1>
 </div>
 
-A reusable Beamer/LaTeX template for UFAL presentations (thesis defenses,
-seminars, talks), built on the **college-beamer** theme with UFAL branding
-(logo + Maceió street-map cover). Extracted from the slides used in a
-Computer Science undergraduate thesis defense at UFAL — see
+<div align="center" style="max-width: 850px; margin: 0 auto;">
+<table>
+  <tr>
+    <td valign="center" style="padding-right: 20px; width: 200px;">
+      <img src="https://user-images.githubusercontent.com/91018438/204195385-acc6fcd4-05a7-4f25-87d1-cb7d5cc5c852.png" alt="animated" width="230" />
+    </td>
+    <td valign="center" style="padding-left: 20px;">
+      <p>A reusable Beamer/LaTeX template for UFAL presentations (thesis
+defenses, seminars, talks), built on the <code>college-beamer</code> theme
+with UFAL branding (logo + Maceió street-map cover).</p>
+    </td>
+  </tr>
+</table>
+</div>
+
+Extracted from the slides used in a Computer Science undergraduate thesis
+defense at UFAL — see
 [ufal-presentation-tesis](https://github.com/TETEURYAN/ufal-presentation-tesis)
 for a filled-in example.
 
